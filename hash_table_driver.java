@@ -18,12 +18,34 @@ class hash_node{
     public void insert_node(int key,int value){
         h[hash_fn(key)]=new hash_node(key,value);
     }
+    public hash_node search(int key){
+        for(int i=0;i<997;i++){
+            if(h[hash_fn(i)]!=null)
+            {
+                if(h[hash_fn(i)].key==key)
+                    return h[hash_fn(i)];
+            }
+        }
+        return null;
+    }
     public void print_hash_table(){
         for(int i=0;i<997;i++){
             if(h[hash_fn(i)]!=null){
                 System.out.println("key value is : "+h[hash_fn(i)].key+" value is : "+h[hash_fn(i)].value);
             }
         }
+    }
+    public hash_node get(int key){
+        for(int i=0;i<997;i++){
+            if(h[hash_fn(i)]!=null){
+                if(h[hash_fn(i)].key==key)
+                {
+                    System.out.println(h[hash_fn(i)].value);
+                    return h[hash_fn(i)];
+                }
+            }
+        }
+        return null;
     }
  }
 public class hash_table_driver {
@@ -35,5 +57,8 @@ public class hash_table_driver {
           h.insert_node(i,i+1);
       }
       h.print_hash_table();
+      hash_node h2=h.get(3);
+      h2=h.search(6);
+      System.out.println("==========  "+h2.key+"  =========  "+h2.value);
     }
 }
